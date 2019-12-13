@@ -55,6 +55,37 @@ export class OrderComponent implements OnInit {
     })
   }
 
+  addOrder(): void{
+
+    var costPer;
+
+    if(this.size == "S"){
+      costPer = 10;
+    }
+    if(this.size == "M"){
+      costPer = 15;
+    }
+    if(this.size == "L"){
+      costPer = 20;
+    }
+
+    var hold = costPer * this.quantity;
+
+    var order = {
+      firstName: this.firstName,
+      lastName: this.lastName,
+      type: this.type,
+      size: this.size,
+      quantity: this.quantity,
+      total: hold
+    }
+
+    this.orderService.addOrder(order).subscribe(response => {
+      this.getOrders();
+      this.clearForm();
+    })
+  }
+
   clearForm(): void {
     this._id = null;
     this.firstName = null;
