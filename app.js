@@ -6,11 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./server/controllers/index');
 var usersRouter = require('./server/controllers/users');
-
 // my stuff
 const ordersController = require('./server/controllers/orders');
 const globals = require('./config/globals');
 const mongoose = require('mongoose');
+import { HttpClientModule } from '@angular/common/http';
 
 
 mongoose.connect(globals.db, {

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClientModule } from '@angular/common/http';
 import { Observable } from "rxjs";
+import { HttpClient, HttpHeaders} from "@angular/common/http";
 import globals from "../../../../config/globals";
 
 const httpOptions = {
@@ -13,14 +14,14 @@ const httpOptions = {
 
 export class OrderService {
 
-  constructor(private http: globals.apiRoot) { }
+  constructor(private http: HttpClient) { }
 
   getOrders() {
     return this.http.get(globals.apiRoot + 'orders', httpOptions);
   }
-  getOrder(_id) {
-    return this.http.get(globals.apiRoot + 'orders/' + _id, httpOptions);
-  }
+  // getOrder(_id) {
+  //   return this.http.get(globals.apiRoot + 'orders/' + _id, httpOptions);
+  // }
 
   addOrder(order) {
     return this.http.post(globals.apiRoot + 'orders', order, httpOptions);
