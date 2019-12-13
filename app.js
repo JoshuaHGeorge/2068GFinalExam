@@ -4,8 +4,25 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-var indexRouter = require('./controllers/index');
-var usersRouter = require('./controllers/users');
+var indexRouter = require('./server/controllers/index');
+var usersRouter = require('./server/controllers/users');
+
+// my stuff
+const ordersController = require('./server/controllers/orders');
+const globals = require('./config/globals');
+const mongoose = require('mongoose');
+
+
+mongoose.connect(globals.db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(
+    (res) => {
+      console.log("I'm in");
+    }
+).catch(() => {
+  console.log('Abort Mission');
+});
 
 var app = express();
 
@@ -21,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/orders', ordersController);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
