@@ -94,16 +94,4 @@ router.delete('/:_id', (req, res) => {
     })
 });
 
-router.put('/:_id', (req, res) => {
-    var id = req.params._id;
-    Order.update(id, req.body, (err, task) => {
-        if (err) {
-            return res.send(err).status(404)
-        }
-        else {
-            res.json(task).status(202)
-        }
-    })
-})
-
-module.exports = router
+module.exports = router;
