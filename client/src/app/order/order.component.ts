@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrderService } from "../services/order.service";
 import { Observable } from "rxjs";
+import { OrderService } from "../services/order.service";
 
 @Component({
   selector: 'app-order',
@@ -35,15 +35,15 @@ export class OrderComponent implements OnInit {
       console.log('Sad ' + err);
     });
   }
-  getOrder(order): void {
-    this._id = order._id;
-    this.firstName = order.firstName;
-    this.lastName = order.lastName;
-    this.type = order.type;
-    this.size = order.size;
-    this.quantity = order.quantity;
-    this.total = order.total;
-  }
+  // getOrder(order): void {
+  //   this._id = order._id;
+  //   this.firstName = order.firstName;
+  //   this.lastName = order.lastName;
+  //   this.type = order.type;
+  //   this.size = order.size;
+  //   this.quantity = order.quantity;
+  //   this.total = order.total;
+  // }
   deleteOrder(_id: string): void {
     this.orderService.deleteOrder(_id).subscribe(response => {
       this.getOrders();

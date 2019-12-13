@@ -13,7 +13,7 @@ const httpOptions = {
 
 export class OrderService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: globals.apiRoot) { }
 
   getOrders() {
     return this.http.get(globals.apiRoot + 'orders', httpOptions);
